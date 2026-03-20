@@ -44,19 +44,19 @@ export default function Sidebar() {
       {/* 3. 작품 링크들 */}
       <nav className="flex flex-row flex-wrap gap-2 justify-center md:justify-start">
         <a
-          href="#"
+          href="/kusoAtsume"
           className="bg-white text-black text-[9px] px-2 py-[3px] tracking-widest hover:bg-white/70 transition-colors cursor-pointer"
           style={{ fontFamily: "var(--font-press-start)" }}
         >
-          test
+          KOSO A TSUME
         </a>
-        <a
+        {/* <a
           href="#"
           className="bg-white text-black text-[9px] px-2 py-[3px] tracking-widest hover:bg-white/70 transition-colors cursor-pointer"
           style={{ fontFamily: "var(--font-press-start)" }}
         >
           work2
-        </a>
+        </a> */}
       </nav>
     </aside>
   );

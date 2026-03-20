@@ -21,11 +21,12 @@ function shuffleArray<T>(array: T[]): T[] {
 export default function Slideshow() {
   const [images, setImages] = useState<SlideshowImage[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isWide, setIsWide] = useState(true);
 
   useEffect(() => {
     fetch("/api/slideshow")
       .then((res) => res.json())
-      .then((data) => setImages(shuffleArray(data))); // 가져올 때 랜덤으로 섞기
+      .then((data) => setImages(shuffleArray(data)));
   }, []);
 
   useEffect(() => {
@@ -38,11 +39,26 @@ export default function Slideshow() {
     return () => clearInterval(interval);
   }, [images]);
 
+  // 화면 비율 감지
+  useEffect(() => {
+    const checkRatio = () => {
+      // 슬라이드쇼 영역의 비율이 사진 비율(3:2)보다 가로가 넓으면 cover, 세로가 길면 contain
+      const container = document.getElementById("slideshow-container");
+      if (!container) return;
+      const { width, height } = container.getBoundingClientRect();
+      setIsWide(width / height > 3 / 2);
+    };
+
+    checkRatio();
+    window.addEventListener("resize", checkRatio);
+    return () => window.removeEventListener("resize", checkRatio);
+  }, []);
+
   if (images.length === 0) return null;
 
   return (
     <div className="w-full h-full">
-      <div className="relative w-full h-full">
+      <div id="slideshow-container" className="relative w-full h-full">
         {images.map((image, index) => (
           <div
             key={image.src}
@@ -54,7 +70,7 @@ export default function Slideshow() {
               src={image.src}
               alt={image.alt}
               fill
-              className="object-cover grayscale"
+              className={`grayscale ${isWide ? "object-cover" : "object-contain"}`}
               priority={index === 0}
             />
           </div>

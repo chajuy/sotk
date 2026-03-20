@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${pressStart.variable} bg-black text-white min-h-screen`}
+        className={`${pressStart.variable} bg-black text-white flex flex-col h-full`}
       >
         <Header />
-        {children}
+        <div className="flex-1 overflow-hidden">{children}</div>
       </body>
     </html>
   );

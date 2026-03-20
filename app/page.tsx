@@ -1,13 +1,13 @@
 import Sidebar from "@/components/Sidebar";
+import Slideshow from "@/components/Slideshow";
 
 export default function Home() {
   return (
-    <main className="flex flex-col md:flex-row min-h-screen">
-      {/* 왼쪽 사이드바 영역 */}
+    <main className="flex flex-col md:flex-row h-full">
       <Sidebar />
-
-      {/* 오른쪽 메인 영역 */}
-      <section className="flex-1 p-6">메인 준비중</section>
+      <section className="flex-1 flex items-start justify-center pt-4 md:py-6 overflow-hidden">
+        <Slideshow />
+      </section>
     </main>
   );
 }

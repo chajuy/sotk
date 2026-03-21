@@ -63,9 +63,9 @@ export default function KusoAtsumePage() {
   return (
     <div className="flex-1 overflow-y-auto h-full">
       {/* 페이지 타이틀 */}
-      <div className="flex justify-center py-4 md:py-6 border-b border-white/20">
+      <div className="flex justify-center border-b border-white/20">
         <h2
-          className="bg-white text-black text-[10px] md:text-xs px-4 py-2 tracking-widest"
+          className="bg-white text-black text-[10px] md:text-xs px-4 py-2 tracking-widest w-full text-center"
           style={{ fontFamily: "var(--font-press-start)" }}
         >
           KUSO ATSUME

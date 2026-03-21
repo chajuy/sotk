@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useMemo } from "react";
 import { quotes } from "@/data/quotes";
 
 function getDailyQuote() {
@@ -14,7 +16,7 @@ function getDailyQuote() {
 }
 
 export default function Sidebar() {
-  const quote = getDailyQuote();
+  const quote = useMemo(() => getDailyQuote(), []);
 
   return (
     <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-white/20 p-4 md:p-6 flex flex-col gap-4 md:gap-8">
@@ -50,13 +52,6 @@ export default function Sidebar() {
         >
           KOSO A TSUME
         </a>
-        {/* <a
-          href="#"
-          className="bg-white text-black text-[9px] px-2 py-[3px] tracking-widest hover:bg-white/70 transition-colors cursor-pointer"
-          style={{ fontFamily: "var(--font-press-start)" }}
-        >
-          work2
-        </a> */}
       </nav>
     </aside>
   );

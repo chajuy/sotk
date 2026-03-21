@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   // next_cursor는 Cloudinary가 반환하는 페이지네이션 커서값이에요
   // 첫 페이지는 cursor가 없고, 다음 페이지부터 cursor값을 전달해요
   const cursor = searchParams.get("cursor");
-  const perPage = 12;
+  const perPage = 15;
 
   try {
     // cursor가 있으면 다음 페이지, 없으면 첫 페이지

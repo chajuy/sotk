@@ -8,6 +8,10 @@ cloudinary.config({
 });
 
 export async function GET(request: Request) {
+  // 환경변수 확인용 임시 코드
+  console.log("CLOUD_NAME:", process.env.CLOUDINARY_CLOUD_NAME);
+  console.log("API_KEY:", process.env.CLOUDINARY_API_KEY);
+
   const { searchParams } = new URL(request.url);
   // next_cursor는 Cloudinary가 반환하는 페이지네이션 커서값이에요
   // 첫 페이지는 cursor가 없고, 다음 페이지부터 cursor값을 전달해요
@@ -35,7 +39,6 @@ export async function GET(request: Request) {
         height: img.height,
       })),
       totalCount: result.total_count,
-      // next_cursor가 있으면 다음 페이지가 존재해요
       nextCursor: result.next_cursor || null,
     });
   } catch (error) {
